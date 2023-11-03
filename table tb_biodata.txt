@@ -1,0 +1,87 @@
+Microsoft Windows [Version 10.0.22621.2428]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\HP>cd c:\xampp\mysql\bin
+
+c:\xampp\mysql\bin>mysql -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 9
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| siswa              |
+| test               |
++--------------------+
+6 rows in set (0.003 sec)
+
+MariaDB [(none)]> create database biodata;
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [(none)]> use biodata;
+Database changed
+MariaDB [biodata]> create table tb_biodata(
+    -> id int primary key,
+    -> Nama_Lengkap varchar(255),
+    -> Tempat varchar(255),
+    -> Tanggal_Lahir date,
+    -> Alamat varchar(255),
+    -> NoTelp int,
+    -> Jenis_Kelamin varchar(255),
+    -> Agama varchar(255),
+    -> Hobi varchar(255));
+Query OK, 0 rows affected (0.054 sec)
+
+MariaDB [biodata]> desc tb_biodata;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| id            | int(11)      | NO   | PRI | NULL    |       |
+| Nama_Lengkap  | varchar(255) | YES  |     | NULL    |       |
+| Tempat        | varchar(255) | YES  |     | NULL    |       |
+| Tanggal_Lahir | date         | YES  |     | NULL    |       |
+| Alamat        | varchar(255) | YES  |     | NULL    |       |
+| NoTelp        | int(11)      | YES  |     | NULL    |       |
+| Jenis_Kelamin | varchar(255) | YES  |     | NULL    |       |
+| Agama         | varchar(255) | YES  |     | NULL    |       |
+| Hobi          | varchar(255) | YES  |     | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+9 rows in set (0.053 sec)
+
+MariaDB [biodata]> insert into tb_biodata values ('4011','Ihsan Nashrul
+Afifi','Bandung','2005-07-29','Pangaritan','0827040711','Laki-Laki','Islam','ngoding');
+Query OK, 1 row affected (0.004 sec)
+
+MariaDB [biodata]> select*from tb_biodata;
++------+---------------------+---------+---------------+------------+-----------+---------------+-------+---------+
+| id   | Nama_Lengkap        | Tempat  | Tanggal_Lahir | Alamat     | NoTelp    | Jenis_Kelamin | Agama | Hobi    |
++------+---------------------+---------+---------------+------------+-----------+---------------+-------+---------+
+| 4011 | Ihsan Nashrul Afifi | Bandung | 2005-07-29    | Pangaritan | 827040711 | Laki-Laki     | Islam | ngoding |
++------+---------------------+---------+---------------+------------+-----------+---------------+-------+---------+
+1 row in set (0.001 sec)
+
+MariaDB [biodata]> insert into tb_biodata values ('7029','Kyla Kirana','Jakarta','2006-04-11','Taman Asri','0811704072','Perempuan','Islam','Masak');
+Query OK, 1 row affected (0.005 sec)
+
+MariaDB [biodata]> insert into tb_biodata values ('6969','Christopher Nolan','Hollow Earth','2014-06-11','Bekasi','0011100','Laki-Laki','Christian','Menulis');
+Query OK, 1 row affected (0.005 sec)
+
+MariaDB [biodata]> select*from tb_biodata;
++------+---------------------+--------------+---------------+------------+-----------+---------------+-----------+---------+
+| id   | Nama_Lengkap        | Tempat       | Tanggal_Lahir | Alamat     | NoTelp    | Jenis_Kelamin | Agama     | Hobi    |
++------+---------------------+--------------+---------------+------------+-----------+---------------+-----------+---------+
+| 4011 | Ihsan Nashrul Afifi | Bandung      | 2005-07-29    | Pangaritan | 827040711 | Laki-Laki     | Islam     | ngoding |
+| 6969 | Christopher Nolan   | Hollow Earth | 2014-06-11    | Bekasi     |     11100 | Laki-Laki     | Christian | Menulis |
+| 7029 | Kyla Kirana         | Jakarta      | 2006-04-11    | Taman Asri | 811704072 | Perempuan     | Islam     | Masak   |
++------+---------------------+--------------+---------------+------------+-----------+---------------+-----------+---------+
+3 rows in set (0.001 sec)
